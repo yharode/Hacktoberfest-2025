@@ -1,6 +1,6 @@
-# Contributing to Hacktoberfest 2025
+# Contributing to Hacktoberfest 2025 - Python Edition
 
-First off, thank you for considering contributing to this project! 🎉
+First off, thank you for considering contributing to this Python project! 🎉🐍
 
 ## Table of Contents
 
@@ -24,7 +24,8 @@ First off, thank you for considering contributing to this project! 🎉
 
 - A GitHub account
 - Git installed on your local machine
-- Basic knowledge of the programming language you're contributing in
+- Python 3.7 or higher installed
+- Basic knowledge of Python programming
 
 ## How Can I Contribute?
 
@@ -49,54 +50,63 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 - Describe the current behavior and explain which behavior you expected to see instead
 - Explain why this enhancement would be useful
 
-### 📝 Code Contributions
+### 📝 Python Code Contributions
 
 #### Types of Contributions We Welcome
 
 1. **Algorithm Implementations**
-   - Sorting algorithms
-   - Search algorithms
-   - Data structure implementations
-   - Graph algorithms
+   - Sorting algorithms (bubble sort, merge sort, quick sort, etc.)
+   - Search algorithms (binary search, linear search, etc.)
+   - Data structure implementations (linked lists, trees, heaps, etc.)
+   - Graph algorithms (BFS, DFS, Dijkstra's, etc.)
    - Dynamic programming solutions
 
 2. **Utility Functions**
-   - String manipulation
-   - Array/List operations
+   - String manipulation functions
+   - List/array operations
    - Mathematical functions
    - File operations
-   - API helpers
+   - API wrappers
+   - Data validation utilities
 
 3. **Mini Projects**
    - CLI tools
    - Web scrapers
    - Data parsers
    - Automation scripts
+   - Simple games
 
 4. **Documentation**
    - README improvements
-   - Code comments
+   - Code comments and docstrings
    - Tutorial additions
-   - Example usage
+   - Example usage demonstrations
 
 ## Style Guidelines
 
-### General Guidelines
+### Python Style Guidelines
+
+All contributions must follow these Python best practices:
+
+- **Follow PEP 8**: Use the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide
+- **Type Hints**: Include type hints for function parameters and return values
+- **Docstrings**: Add comprehensive docstrings for all functions and classes
+- **Naming Conventions**:
+  - Use `snake_case` for function and variable names
+  - Use `PascalCase` for class names
+  - Use `UPPER_CASE` for constants
+- **Comments**: Add inline comments for complex logic
+- **Error Handling**: Include proper exception handling with specific exception types
+- **Line Length**: Keep lines under 88 characters (Black formatter standard) or 79 (PEP 8)
+- **Imports**: Group imports (standard library, third-party, local) and sort alphabetically
+
+### Code Quality Requirements
 
 - Write clear, readable, and maintainable code
-- Follow the conventions of the language you're using
-- Include comments for complex logic
-- Add docstrings/documentation for functions and classes
 - Include error handling where appropriate
 - Write meaningful variable and function names
-
-### Language-Specific Guidelines
-
-#### Python
-- Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide
-- Use type hints where applicable
-- Include docstrings for all functions and classes
-- Use snake_case for function and variable names
+- Test your code with different inputs
+- No unused imports or variables
 
 ```python
 def calculate_fibonacci(n: int) -> list:
@@ -248,10 +258,12 @@ Brief description of what this PR does
 ### What We Look For
 
 - ✅ Code quality and readability
-- ✅ Proper documentation
-- ✅ Following language conventions
+- ✅ Proper Python docstrings and type hints
+- ✅ Following PEP 8 conventions
+- ✅ Comprehensive error handling
 - ✅ No duplicate contributions
 - ✅ Meaningful contribution (not spam)
+- ✅ Tested code with example usage
 
 ## Questions?
 

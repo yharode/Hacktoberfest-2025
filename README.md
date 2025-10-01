@@ -7,13 +7,14 @@
 
 ## 📖 About This Repository
 
-Welcome to the Hacktoberfest 2025 Code Contribution Repository! This is a beginner-friendly project designed to help developers make their first open-source contributions during Hacktoberfest.
+Welcome to the Hacktoberfest 2025 Python Code Contribution Repository! This is a beginner-friendly project designed to help developers make their first open-source contributions during Hacktoberfest, focusing specifically on Python programming.
 
 ### 🎯 Project Goals
-- Provide a welcoming space for first-time contributors
-- Collect diverse code samples in various programming languages
+- Provide a welcoming space for first-time Python contributors
+- Collect diverse Python code samples, algorithms, and utilities
 - Help participants learn Git and GitHub workflows
 - Foster a supportive open-source community
+- Promote Python best practices and clean code
 
 ## 📂 Project Structure
 
@@ -26,22 +27,20 @@ Hacktoberfest-2025/
 ├── .github/               # GitHub templates
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── ISSUE_TEMPLATE/
-├── python/                # Python code samples
-│   └── hello_world.py
-├── javascript/            # JavaScript code samples
-├── java/                  # Java code samples
-├── cpp/                   # C++ code samples
-└── others/                # Other languages
+└── python/                # Python code samples
+    ├── README.md          # Python-specific guidelines
+    └── hello_world.py     # Example contribution
 ```
 
 ## 🤝 How to Contribute
 
-We welcome the following types of contributions:
-- ✅ Code samples and algorithms
+We welcome the following types of Python contributions:
+- ✅ Algorithms (sorting, searching, graph algorithms, etc.)
+- ✅ Data structures implementations
 - ✅ Utility functions and helper scripts
 - ✅ Bug fixes and improvements
 - ✅ Documentation enhancements
-- ✅ New programming language examples
+- ✅ Code optimizations and refactoring
 
 ### 🚀 Step-by-Step Contribution Guide
 
@@ -60,9 +59,10 @@ git checkout -b feature/your-contribution-name
 ```
 
 #### 4. Make Your Changes
-- Add your code in the appropriate language folder
-- Follow the coding standards for your language
-- Include comments and documentation
+- Add your Python code in the `python/` folder
+- Follow PEP 8 style guidelines
+- Include type hints and docstrings
+- Add comments for complex logic
 - Test your code before committing
 
 #### 5. Commit Your Changes
@@ -107,17 +107,19 @@ git push origin feature/your-contribution-name
 - Incomplete implementations
 
 ### 📋 Code Quality Standards
-- Include a README in your language folder if adding a new one
-- Add docstrings/comments explaining your code
+- Follow PEP 8 Python style guide
+- Add comprehensive docstrings explaining your code
+- Include type hints for function parameters and return values
+- Use meaningful variable and function names
 - Use meaningful commit messages
 - One feature per pull request
-- Follow language-specific style guides (PEP 8 for Python, ESLint for JavaScript, etc.)
+- Include example usage in your code
 
 ## 🎓 Example Contributions
 
-### Python Example
+### Algorithm Example
 ```python
-def fibonacci(n):
+def fibonacci(n: int) -> list[int]:
     """
     Generate Fibonacci sequence up to n terms.
     
@@ -125,13 +127,18 @@ def fibonacci(n):
         n (int): Number of terms to generate
         
     Returns:
-        list: Fibonacci sequence
+        list[int]: Fibonacci sequence
+        
+    Raises:
+        ValueError: If n is negative
         
     Example:
         >>> fibonacci(5)
         [0, 1, 1, 2, 3]
     """
-    if n <= 0:
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n == 0:
         return []
     elif n == 1:
         return [0]
@@ -140,42 +147,66 @@ def fibonacci(n):
     for i in range(2, n):
         sequence.append(sequence[i-1] + sequence[i-2])
     return sequence
+
+
+if __name__ == "__main__":
+    print(fibonacci(10))
 ```
 
-### JavaScript Example
-```javascript
-/**
- * Check if a string is a palindrome
- * @param {string} str - Input string
- * @returns {boolean} - True if palindrome, false otherwise
- * @example
- * isPalindrome("racecar") // returns true
- * isPalindrome("hello") // returns false
- */
-function isPalindrome(str) {
-    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return cleaned === cleaned.split('').reverse().join('');
-}
+### Data Structure Example
+```python
+class Stack:
+    """
+    A simple stack implementation using a list.
+    
+    Supports push, pop, peek, and is_empty operations.
+    """
+    
+    def __init__(self):
+        """Initialize an empty stack."""
+        self._items: list = []
+    
+    def push(self, item) -> None:
+        """Add an item to the top of the stack."""
+        self._items.append(item)
+    
+    def pop(self):
+        """Remove and return the top item from the stack."""
+        if self.is_empty():
+            raise IndexError("Pop from empty stack")
+        return self._items.pop()
+    
+    def peek(self):
+        """Return the top item without removing it."""
+        if self.is_empty():
+            raise IndexError("Peek from empty stack")
+        return self._items[-1]
+    
+    def is_empty(self) -> bool:
+        """Check if the stack is empty."""
+        return len(self._items) == 0
 ```
 
-### Java Example
-```java
-/**
- * Calculate factorial of a number
- * @param n The number to calculate factorial for
- * @return The factorial of n
- */
-public class Factorial {
-    public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Number must be non-negative");
-        }
-        if (n <= 1) {
-            return 1;
-        }
-        return n * factorial(n - 1);
-    }
-}
+### Utility Function Example
+```python
+def is_palindrome(text: str) -> bool:
+    """
+    Check if a string is a palindrome (ignoring case and non-alphanumeric characters).
+    
+    Args:
+        text (str): The string to check
+        
+    Returns:
+        bool: True if palindrome, False otherwise
+        
+    Example:
+        >>> is_palindrome("A man a plan a canal Panama")
+        True
+        >>> is_palindrome("hello")
+        False
+    """
+    cleaned = ''.join(char.lower() for char in text if char.isalnum())
+    return cleaned == cleaned[::-1]
 ```
 
 ## 📜 Code of Conduct
@@ -214,11 +245,18 @@ Thanks to all our amazing contributors! 🎉
 - 💬 Join our discussions in the [Discussions](https://github.com/WalkingDevFlag/Hacktoberfest-2025/discussions) tab
 - ⭐ Star this repository if you find it helpful!
 
-## 🎉 Hacktoberfest Resources
+## 🎉 Hacktoberfest & Python Resources
 
+### Hacktoberfest
 - [Hacktoberfest Official Website](https://hacktoberfest.com/)
 - [How to Create a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+
+### Python Resources
+- [PEP 8 Style Guide](https://www.python.org/dev/peps/pep-0008/)
+- [Python Documentation](https://docs.python.org/3/)
+- [Python Type Hints](https://docs.python.org/3/library/typing.html)
+- [Real Python Tutorials](https://realpython.com/)
 
 ## 🌟 Show Your Support
 

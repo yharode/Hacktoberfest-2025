@@ -11,23 +11,25 @@
 - [ ] ♻️ Code refactoring
 - [ ] ✨ Enhancement to existing feature
 
-## 💻 Language/Category
-<!-- Specify the programming language and category of your contribution -->
-- **Language:** [e.g., Python, JavaScript, Java, C++]
+## 💻 Category
+<!-- Specify the category of your Python contribution -->
 - **Category:** [e.g., Algorithm, Utility Function, Data Structure, Mini Project]
+- **Python Version Tested:** [e.g., Python 3.9, Python 3.10, Python 3.11]
 
 ## 📋 Checklist
 <!-- Mark completed items with an 'x' -->
-- [ ] My code follows the style guidelines of this project
+- [ ] My code follows PEP 8 style guidelines
 - [ ] I have performed a self-review of my own code
+- [ ] I have added type hints for function parameters and return values
+- [ ] I have added comprehensive docstrings for my functions/classes
 - [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have added docstrings/documentation for my functions
-- [ ] I have included example usage in comments or README
+- [ ] I have included example usage in `__main__` block or comments
 - [ ] My changes don't break existing functionality
-- [ ] I have tested my code thoroughly
+- [ ] I have tested my code with different inputs
 - [ ] My code handles edge cases and errors appropriately
-- [ ] I have placed my code in the appropriate language folder
+- [ ] I have placed my code in the `python/` folder
 - [ ] My commit messages follow the project's commit message guidelines
+- [ ] No unused imports or variables in my code
 
 ## 🎯 What does this PR do?
 <!-- Explain what your code does and why it's useful -->
