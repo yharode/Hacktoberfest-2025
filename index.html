@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beautiful Landing Page">
+    <title>Beautiful Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f3f4f7;
+            overflow-x: hidden;
+        }
+        header {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+        .cta-btn {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: #2575fc;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #f3f4f7;
+        }
+        .features {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .feature-item {
+            display: inline-block;
+            width: 30%;
+            margin: 0 15px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .feature-item i {
+            font-size: 3rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+        }
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            color: #777;
+            font-weight: 300;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.9rem;
+        }
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .feature-item {
+                width: 100%;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Our Service</h1>
+        <p>Your one-stop solution for everything. We help you succeed with cutting-edge technology.</p>
+        <button class="cta-btn">Get Started</button>
+    </header>
+
+    <section class="features">
+        <h2>Why Choose Us?</h2>
+        <div class="feature-item">
+            <i class="fas fa-cogs"></i>
+            <h3>Customizable Solutions</h3>
+            <p>We offer highly flexible options tailored to your unique needs and preferences.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Security First</h3>
+            <p>Our top priority is to ensure your data is safe and your privacy is protected.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Our dedicated team is available around the clock to assist you with any issues.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Beautiful Landing Page | All Rights Reserved</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
