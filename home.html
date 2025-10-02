@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Project — Home</title>
+  <meta name="description" content="Home page for my project — short description, features, how to get started and contact." />
+  <style>
+    /* Simple, modern single-file styles */
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.04);
+      --radius:12px;
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#071029);color:#e6eef6;line-height:1.5}
+    .container{max-width:1100px;margin:32px auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#34d399);display:flex;align-items:center;justify-content:center;font-weight:700;color:#062126}
+    h1{font-size:1.4rem;margin:0}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    nav a:hover{color:var(--accent)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+    .hero h2{font-size:1.9rem;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#062126;font-weight:600;text-decoration:none}
+    .secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:10px;margin-left:12px}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:20px}
+    .feature{background:var(--glass);padding:14px;border-radius:10px}
+    .feature h3{margin:0 0 6px;font-size:1rem}
+    .feature p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    .screenshot{height:220px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.12));display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px dashed rgba(255,255,255,0.03)}
+
+    footer{margin-top:36px;padding:20px 0;color:var(--muted);font-size:0.9rem;display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+    }
+
+    /* small utility */
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-size:0.85rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>MP</div>
+        <div>
+          <h1 id="site-title">My Project</h1>
+          <div class="badge">Project Home</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#get-started">Get Started</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h2>Make something useful — quickly and clearly</h2>
+          <p id="tagline">A short, friendly description of your project goes here. Explain what it does and who it helps in one or two lines.</p>
+          <div style="margin-bottom:14px">
+            <a class="cta" href="#get-started">Get Started</a>
+            <a class="secondary" href="#features">Explore features</a>
+          </div>
+
+          <div class="features" id="features">
+            <div class="feature">
+              <h3>Fast setup</h3>
+              <p>Clear instructions and minimal steps to get running in minutes.</p>
+            </div>
+            <div class="feature">
+              <h3>Modern UI</h3>
+              <p>Responsive layout and clean components for great user experience.</p>
+            </div>
+            <div class="feature">
+              <h3>Extendable</h3>
+              <p>Easily pluggable modules let you add functionality without friction.</p>
+            </div>
+            <div class="feature">
+              <h3>Well documented</h3>
+              <p>Examples, API references, and guides to help contributors and users.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="screenshot" aria-hidden>
+              Project screenshot / illustration
+            </div>
+            <div class="card" style="background:transparent;padding:10px;border-radius:8px;box-shadow:none">
+              <h3 style="margin:0 0 6px">Quick stats</h3>
+              <div class="grid-2">
+                <div>
+                  <strong>v1.0</strong>
+                  <div class="muted">Initial launch</div>
+                </div>
+                <div>
+                  <strong>100+</strong>
+                  <div class="muted">Users in beta</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" class="card" style="margin-top:20px">
+        <h2 style="margin-top:0">About the project</h2>
+        <p style="color:var(--muted)">Describe your project's mission, the problem it solves, and the core technology behind it. Example: "My Project helps small teams automate their repetitive tasks by providing an opinionated workflow and integrations with popular services."</p>
+
+        <h3 style="margin-top:18px">Technical overview</h3>
+        <ul style="color:var(--muted)">
+          <li>Frontend: HTML, CSS, (optionally React / Vue)</li>
+          <li>Backend: Node / Python / Java (choose what fits your team)</li>
+          <li>Data: PostgreSQL / MongoDB / Flat files</li>
+        </ul>
+      </section>
+
+      <section id="get-started" class="card" style="margin-top:16px">
+        <h2 style="margin-top:0">Get started</h2>
+        <ol style="color:var(--muted)">
+          <li>Clone the repo: <code>git clone &lt;repo-url&gt;</code></li>
+          <li>Install dependencies: <code>npm install</code> or <code>pip install -r requirements.txt</code></li>
+          <li>Run locally: <code>npm run dev</code> or <code>python app.py</code></li>
+        </ol>
+
+        <p style="color:var(--muted);margin-top:8px">Replace the placeholders above with your actual repo and commands.</p>
+      </section>
+
+      <section id="contact" class="card" style="margin-top:16px">
+        <h2 style="margin-top:0">Contact & contribute</h2>
+        <p style="color:var(--muted)">Have feedback or want to contribute? Open an issue or send a message to <a href="mailto:you@example.com">you@example.com</a>.</p>
+
+        <form onsubmit="alert('Form demo — replace with real endpoint');return false;" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <input aria-label="Your name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+          <input aria-label="Your email" placeholder="you@example.com" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+          <textarea aria-label="Message" placeholder="A short message" rows="4" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="cta" type="submit">Send</button>
+            <button class="secondary" type="reset">Reset</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> My Project • Built with care</div>
+      <div>Version <strong>1.0</strong></div>
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
