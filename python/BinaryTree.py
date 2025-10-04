@@ -1,20 +1,43 @@
 from collections import deque
 
 class Node:
-    """Node structure for Binary Tree"""
+    """Represents a single node in a Binary Tree.
+
+    Attributes:
+        val (any): The value stored in the node.
+        left (Node): Reference to the left child node.
+        right (Node): Reference to the right child node.
+    """
     def __init__(self, val):
+        """Initialize a node with a value.
+
+        Args:
+            val (any): The value to be stored in the node.
+        """
         self.val = val
         self.left = None
         self.right = None
 
 
 class BinaryTree:
-    """A general Binary Tree (not BST) implementation"""
+    """A general Binary Tree (not necessarily a Binary Search Tree).
+
+    Supports insertion (level-order), traversal (inorder, preorder, postorder, level-order),
+    finding, deleting, computing height, and counting nodes.
+    """
+
     def __init__(self):
+        """Initialize an empty Binary Tree."""
         self.root = None
 
     def insert(self, val):
-        """Insert node in level order (keeps tree complete)"""
+        """Insert a new node in level-order (left-to-right).
+
+        This keeps the tree as complete as possible.
+
+        Args:
+            val (any): The value to insert into the tree.
+        """
         new_node = Node(val)
         if not self.root:
             self.root = new_node
@@ -36,24 +59,43 @@ class BinaryTree:
                 q.append(node.right)
 
     def inorder(self, node):
+        """Perform inorder traversal (Left → Root → Right).
+
+        Args:
+            node (Node): The starting node (usually self.root).
+        """
         if node:
             self.inorder(node.left)
             print(node.val, end=" ")
             self.inorder(node.right)
 
     def preorder(self, node):
+        """Perform preorder traversal (Root → Left → Right).
+
+        Args:
+            node (Node): The starting node (usually self.root).
+        """
         if node:
             print(node.val, end=" ")
             self.preorder(node.left)
             self.preorder(node.right)
 
     def postorder(self, node):
+        """Perform postorder traversal (Left → Right → Root).
+
+        Args:
+            node (Node): The starting node (usually self.root).
+        """
         if node:
             self.postorder(node.left)
             self.postorder(node.right)
             print(node.val, end=" ")
 
     def level_order(self):
+        """Perform level-order traversal (Breadth-First Search).
+
+        Prints all node values from top to bottom, left to right.
+        """
         if not self.root:
             return
         q = deque([self.root])
@@ -66,18 +108,42 @@ class BinaryTree:
                 q.append(node.right)
 
     def size(self, node):
+        """Return the total number of nodes in the tree.
+
+        Args:
+            node (Node): The starting node.
+
+        Returns:
+            int: The number of nodes in the subtree rooted at 'node'.
+        """
         if not node:
             return 0
         return 1 + self.size(node.left) + self.size(node.right)
 
     def height(self, node):
-        """Height in terms of edges. For nodes count, change base case to 0."""
+        """Compute the height of the tree (in terms of edges).
+
+        To get height in terms of number of nodes, change base case to 0.
+
+        Args:
+            node (Node): The starting node.
+
+        Returns:
+            int: Height of the tree (edge count).
+        """
         if not node:
             return -1
         return 1 + max(self.height(node.left), self.height(node.right))
 
     def find(self, val):
-        """Find node with specific value (BFS search)"""
+        """Find and return the node containing a given value.
+
+        Args:
+            val (any): Value to search for.
+
+        Returns:
+            Node or None: The node containing 'val', or None if not found.
+        """
         if not self.root:
             return None
         q = deque([self.root])
@@ -92,10 +158,24 @@ class BinaryTree:
         return None
 
     def delete(self, val):
-        """Delete node by replacing with deepest node value"""
+        """Delete a node by replacing it with the deepest node.
+
+        Steps:
+            1. Find the node with the given value.
+            2. Find the deepest-rightmost node in the tree.
+            3. Replace the value of the target node with the deepest node's value.
+            4. Remove the deepest node from the tree.
+
+        Args:
+            val (any): The value of the node to delete.
+
+        Returns:
+            bool: True if deletion was successful, False otherwise.
+        """
         if not self.root:
             return False
 
+        # Case: single root node
         if not self.root.left and not self.root.right:
             if self.root.val == val:
                 self.root = None
@@ -122,7 +202,11 @@ class BinaryTree:
         return False
 
     def _delete_deepest(self, deepest):
-        """Helper to remove the deepest node"""
+        """Helper to remove the deepest node in the tree.
+
+        Args:
+            deepest (Node): The deepest node to be deleted.
+        """
         q = deque([self.root])
         while q:
             node = q.popleft()
