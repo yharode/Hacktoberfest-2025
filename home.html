@@ -6,53 +6,213 @@
   <title>My Project — Home</title>
   <meta name="description" content="Home page for my project — short description, features, how to get started and contact." />
   <style>
-    /* Simple, modern single-file styles */
-    :root{
-      --bg:#0f1724; /* dark navy */
-      --card:#0b1220;
-      --muted:#9aa4b2;
-      --accent:#6ee7b7;
+    /* Theme Variables */
+    :root {
+      /* Dark Theme (default) */
+      --bg: #0f1724;
+      --card: #0b1220;
+      --text-primary: #e6eef6;
+      --text-secondary: #9aa4b2;
+      --accent: #6ee7b7;
       --glass: rgba(255,255,255,0.04);
-      --radius:12px;
+      --border: rgba(255,255,255,0.06);
+      --shadow: rgba(2,6,23,0.6);
+      --gradient-bg: linear-gradient(180deg, #0f1724, #071029);
+      --radius: 12px;
       color-scheme: dark;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
+
+    /* Light Theme */
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --card: #f8fafc;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --accent: #059669;
+      --glass: rgba(0,0,0,0.02);
+      --border: rgba(0,0,0,0.08);
+      --shadow: rgba(0,0,0,0.1);
+      --gradient-bg: linear-gradient(180deg, #ffffff, #f1f5f9);
+      color-scheme: light;
+    }
     *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#071029);color:#e6eef6;line-height:1.5}
+    body{
+      margin:0;
+      background:var(--gradient-bg);
+      color:var(--text-primary);
+      line-height:1.5;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
     .container{max-width:1100px;margin:32px auto;padding:24px}
 
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#34d399);display:flex;align-items:center;justify-content:center;font-weight:700;color:#062126}
-    h1{font-size:1.4rem;margin:0}
-    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    h1{font-size:1.4rem;margin:0;color:var(--text-primary)}
+    nav a{color:var(--text-secondary);text-decoration:none;margin-left:14px;transition: color 0.3s ease}
     nav a:hover{color:var(--accent)}
 
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 10px;
+      cursor: pointer;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      margin-left: 20px;
+      margin-right: 0;
+      min-width: 44px;
+      min-height: 44px;
+      z-index: 100;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px var(--shadow);
+      background: var(--glass);
+    }
+    
+    .theme-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .theme-toggle.active .theme-icon {
+      color: var(--accent);
+    }
+    
+    /* Ensure theme toggle appears inline with nav items */
+    nav .theme-toggle {
+      display: inline-flex !important;
+      vertical-align: middle;
+    }
+
+    /* Make sure nav items align properly with theme toggle */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: nowrap;
+    }
+    
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 14px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    nav a:hover {
+      color: var(--accent);
+    }
+
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
-    .card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.6);}
-    .hero h2{font-size:1.9rem;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0 0 18px}
-    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#062126;font-weight:600;text-decoration:none}
-    .secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:10px;margin-left:12px}
+    .card{
+      background:var(--card);
+      padding:22px;
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px var(--shadow);
+      border: 1px solid var(--border);
+      transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero h2{font-size:1.9rem;margin:0 0 8px;color:var(--text-primary)}
+    .hero p{color:var(--text-secondary);margin:0 0 18px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#062126;font-weight:600;text-decoration:none;transition: all 0.3s ease}
+    .cta:hover{transform: translateY(-2px);box-shadow: 0 4px 12px rgba(6, 231, 183, 0.3)}
+    .secondary{background:transparent;border:1px solid var(--border);color:var(--text-secondary);padding:10px 14px;border-radius:10px;margin-left:12px;transition: all 0.3s ease}
+    .secondary:hover{background:var(--glass);border-color:var(--accent)}
 
     .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:20px}
-    .feature{background:var(--glass);padding:14px;border-radius:10px}
-    .feature h3{margin:0 0 6px;font-size:1rem}
-    .feature p{margin:0;color:var(--muted);font-size:0.95rem}
+    .feature{background:var(--glass);padding:14px;border-radius:10px;border:1px solid var(--border);transition: all 0.3s ease}
+    .feature:hover{transform: translateY(-2px);box-shadow: 0 4px 12px var(--shadow)}
+    .feature h3{margin:0 0 6px;font-size:1rem;color:var(--text-primary)}
+    .feature p{margin:0;color:var(--text-secondary);font-size:0.95rem}
 
-    .screenshot{height:220px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.12));display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px dashed rgba(255,255,255,0.03)}
+    .screenshot{
+      height:220px;
+      border-radius:10px;
+      background:var(--glass);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--text-secondary);
+      border:1px dashed var(--border);
+      transition: all 0.3s ease;
+    }
 
-    footer{margin-top:36px;padding:20px 0;color:var(--muted);font-size:0.9rem;display:flex;justify-content:space-between;align-items:center}
+    footer{margin-top:36px;padding:20px 0;color:var(--text-secondary);font-size:0.9rem;display:flex;justify-content:space-between;align-items:center}
 
     /* responsive */
     @media (max-width:880px){
       .hero{grid-template-columns:1fr;}
-      nav{display:none}
+      nav a{display:none}
+      .theme-toggle{
+        margin-left: 8px;
+        margin-right: 0;
+        position: relative;
+      }
+      header{
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
     }
 
     /* small utility */
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-size:0.85rem}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--text-secondary);font-size:0.85rem;border:1px solid var(--border)}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    
+    /* Form Styles */
+    input, textarea, button {
+      transition: all 0.3s ease;
+    }
+    
+    input, textarea {
+      background: var(--card) !important;
+      border: 1px solid var(--border) !important;
+      color: var(--text-primary) !important;
+    }
+    
+    input:focus, textarea:focus {
+      border-color: var(--accent) !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(6, 231, 183, 0.1);
+    }
+    
+    /* Section Titles */
+    h2, h3 {
+      color: var(--text-primary);
+    }
+    
+    /* Links */
+    a {
+      color: var(--accent);
+      transition: color 0.3s ease;
+    }
+    
+    /* Code styling */
+    code {
+      background: var(--glass);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+    
+    /* Smooth transitions for theme switching */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -71,6 +231,24 @@
         <a href="#features">Features</a>
         <a href="#get-started">Get Started</a>
         <a href="#contact">Contact</a>
+        
+        <!-- Theme Toggle Button positioned after Contact -->
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <svg class="theme-icon sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </nav>
     </header>
 
@@ -114,11 +292,11 @@
               <div class="grid-2">
                 <div>
                   <strong>v1.0</strong>
-                  <div class="muted">Initial launch</div>
+                  <div style="color:var(--text-secondary)">Initial launch</div>
                 </div>
                 <div>
                   <strong>100+</strong>
-                  <div class="muted">Users in beta</div>
+                  <div style="color:var(--text-secondary)">Users in beta</div>
                 </div>
               </div>
             </div>
@@ -128,10 +306,10 @@
 
       <section id="about" class="card" style="margin-top:20px">
         <h2 style="margin-top:0">About the project</h2>
-        <p style="color:var(--muted)">Describe your project's mission, the problem it solves, and the core technology behind it. Example: "My Project helps small teams automate their repetitive tasks by providing an opinionated workflow and integrations with popular services."</p>
+        <p style="color:var(--text-secondary)">Describe your project's mission, the problem it solves, and the core technology behind it. Example: "My Project helps small teams automate their repetitive tasks by providing an opinionated workflow and integrations with popular services."</p>
 
         <h3 style="margin-top:18px">Technical overview</h3>
-        <ul style="color:var(--muted)">
+        <ul style="color:var(--text-secondary)">
           <li>Frontend: HTML, CSS, (optionally React / Vue)</li>
           <li>Backend: Node / Python / Java (choose what fits your team)</li>
           <li>Data: PostgreSQL / MongoDB / Flat files</li>
@@ -140,23 +318,23 @@
 
       <section id="get-started" class="card" style="margin-top:16px">
         <h2 style="margin-top:0">Get started</h2>
-        <ol style="color:var(--muted)">
+        <ol style="color:var(--text-secondary)">
           <li>Clone the repo: <code>git clone &lt;repo-url&gt;</code></li>
           <li>Install dependencies: <code>npm install</code> or <code>pip install -r requirements.txt</code></li>
           <li>Run locally: <code>npm run dev</code> or <code>python app.py</code></li>
         </ol>
 
-        <p style="color:var(--muted);margin-top:8px">Replace the placeholders above with your actual repo and commands.</p>
+        <p style="color:var(--text-secondary);margin-top:8px">Replace the placeholders above with your actual repo and commands.</p>
       </section>
 
       <section id="contact" class="card" style="margin-top:16px">
         <h2 style="margin-top:0">Contact & contribute</h2>
-        <p style="color:var(--muted)">Have feedback or want to contribute? Open an issue or send a message to <a href="mailto:you@example.com">you@example.com</a>.</p>
+        <p style="color:var(--text-secondary)">Have feedback or want to contribute? Open an issue or send a message to <a href="mailto:you@example.com">you@example.com</a>.</p>
 
         <form onsubmit="alert('Form demo — replace with real endpoint');return false;" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-          <input aria-label="Your name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
-          <input aria-label="Your email" placeholder="you@example.com" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
-          <textarea aria-label="Message" placeholder="A short message" rows="4" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"></textarea>
+          <input aria-label="Your name" placeholder="Your name" style="padding:10px;border-radius:8px;" />
+          <input aria-label="Your email" placeholder="you@example.com" style="padding:10px;border-radius:8px;" />
+          <textarea aria-label="Message" placeholder="A short message" rows="4" style="padding:10px;border-radius:8px;"></textarea>
           <div style="display:flex;gap:8px">
             <button class="cta" type="submit">Send</button>
             <button class="secondary" type="reset">Reset</button>
@@ -172,20 +350,95 @@
   </div>
 
   <script>
-    // small helpers
+    // Theme Management
+    const THEME_KEY = 'preferred-theme';
+    
+    // Initialize theme on page load
+    function initTheme() {
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      
+      setTheme(theme, false);
+    }
+    
+    // Set theme and update UI
+    function setTheme(theme, save = true) {
+      const html = document.documentElement;
+      const sunIcons = document.querySelectorAll('.sun-icon');
+      const moonIcons = document.querySelectorAll('.moon-icon');
+      
+      if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        sunIcons.forEach(icon => icon.style.display = 'none');
+        moonIcons.forEach(icon => icon.style.display = 'block');
+      } else {
+        html.removeAttribute('data-theme');
+        sunIcons.forEach(icon => icon.style.display = 'block');
+        moonIcons.forEach(icon => icon.style.display = 'none');
+      }
+      
+      if (save) {
+        localStorage.setItem(THEME_KEY, theme);
+      }
+    }
+    
+    // Toggle between themes
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      setTheme(newTheme);
+      
+      // Add a subtle animation feedback
+      document.querySelectorAll('.theme-toggle').forEach(button => {
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          button.style.transform = '';
+        }, 150);
+      });
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem(THEME_KEY)) {
+        setTheme(e.matches ? 'dark' : 'light', false);
+      }
+    });
+    
+    // Initialize theme when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initTheme);
+    
+    // Other functionality
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
         const href = a.getAttribute('href');
-        if(href.length>1){
+        if (href.length > 1) {
           e.preventDefault();
           const target = document.querySelector(href);
-          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+          if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
       });
     });
+    
+    // Show mobile theme toggle on small screens
+    function handleResize() {
+      const nav = document.querySelector('nav');
+      const mobileToggle = document.querySelector('.theme-toggle:last-of-type');
+      
+      if (window.innerWidth <= 880) {
+        nav.style.display = 'none';
+        mobileToggle.style.display = 'flex';
+      } else {
+        nav.style.display = 'block';
+        mobileToggle.style.display = 'none';
+      }
+    }
+    
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('DOMContentLoaded', handleResize);
   </script>
 </body>
 </html>
