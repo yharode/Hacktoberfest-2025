@@ -1,46 +1,58 @@
-import java.util.Scanner; // Import the Scanner class for user input
+import java.util.Scanner;
 
 public class BasicCalculator {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in); // Create a Scanner object
+        Scanner input = new Scanner(System.in);
+        boolean continueCalc = true;
 
-        System.out.print("Enter first number: ");
-        double num1 = input.nextDouble(); // Read the first number
+        while (continueCalc) {
+            try {
+                System.out.print("Enter first number: ");
+                double num1 = input.nextDouble();
 
-        System.out.print("Enter an operator (+, -, *, /): ");
-        char operator = input.next().charAt(0); // Read the operator
+                System.out.print("Enter an operator (+, -, *, /): ");
+                char operator = input.next().trim().charAt(0);
 
-        System.out.print("Enter second number: ");
-        double num2 = input.nextDouble(); // Read the second number
+                System.out.print("Enter second number: ");
+                double num2 = input.nextDouble();
 
-        double result;
-
-        switch (operator) { // Use a switch statement to perform the operation
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 != 0) { // Handle division by zero
-                    result = num1 / num2;
-                } else {
-                    System.out.println("Error: Cannot divide by zero.");
-                    return; // Exit the program if division by zero occurs
+                double result;
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        if (num2 != 0) {
+                            result = num1 / num2;
+                        } else {
+                            System.out.println("Error: Cannot divide by zero.");
+                            continue;
+                        }
+                        break;
+                    default:
+                        System.out.println("Error: Invalid operator.");
+                        continue;
                 }
-                break;
-            default:
-                System.out.println("Error: Invalid operator.");
-                return; // Exit if an invalid operator is entered
+
+                System.out.println("Result: " + result);
+            } catch (Exception e) {
+                System.out.println("Invalid input! Please enter numbers correctly.");
+                input.nextLine(); // Clear buffer
+            }
+
+            System.out.print("Do you want to perform another calculation? (yes/no): ");
+            String choice = input.next().trim().toLowerCase();
+            continueCalc = choice.equals("yes") || choice.equals("y");
         }
 
-        System.out.println("Result: " + result); // Print the calculated result
-
-        input.close(); // Close the Scanner object
+        System.out.println("Calculator exiting. Goodbye!");
+        input.close();
     }
 }
