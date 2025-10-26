@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class PalindromeChecker {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -8,10 +9,10 @@ public class PalindromeChecker {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        // Remove non-alphanumeric and convert to lower case for uniformity
+        // Remove non-alphanumeric characters and convert to lowercase
         String cleanedInput = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        // Check palindrome
+        // Check if palindrome
         boolean isPalindrome = true;
         int length = cleanedInput.length();
         for (int i = 0; i < length / 2; i++) {
